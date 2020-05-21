@@ -2,13 +2,15 @@ import React from 'react';
 import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
 import Main from './Main/Main';
-import STORE from './store';
+import NotesContext from './NotesContext';
 import './App.css';
 
 class App extends React.Component {
 
+  static contextType = NotesContext;
+
   state = {
-    store: STORE
+    store: this.context.store
   }
 
   render() { 
