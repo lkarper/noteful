@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NotesContext from '../NotesContext';
 
-
 const SidebarLinks = () => {
     return (
         <NotesContext.Consumer>

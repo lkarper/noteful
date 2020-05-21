@@ -5,7 +5,6 @@ const Note = (props) => {
     return (
         <NotesContext.Consumer>
             {value => {
-
                 const note = value.store.notes.find(n => 
                     n.id === props.match.params.noteId
                 );

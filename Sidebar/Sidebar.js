@@ -11,12 +11,10 @@ const Sidebar = () => {
             <Route 
                 exact path={["/", "/folder/:folderId"]}
                 component={SidebarLinks}
-                // render={(routeProps) => <SidebarLinks store={store} {...routeProps} />}
             />
             <Route 
                 path="/note/:noteId"
                 component={NotesSidebar}
-                // render={(routeProps) => <NotesSidebar store={store} {...routeProps} />} 
             />    
         </>
     );
