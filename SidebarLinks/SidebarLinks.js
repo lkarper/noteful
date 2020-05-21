@@ -6,7 +6,7 @@ const SidebarLinks = () => {
     return (
         <NotesContext.Consumer>
             {value => {
-                const links = value.store.folders.map(folder =>
+                const links = value.folders.map(folder =>
                     <NavLink
                         key={folder.id}
                         className='folder-link'

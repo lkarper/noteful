@@ -10,12 +10,43 @@ class App extends React.Component {
   static contextType = NotesContext;
 
   state = {
-    store: this.context.store
+    folders: [],
+    notes: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:9090/folders')
+      .then(response => {
+        if(response.ok) {
+          return response.json()
+        }
+        throw new Error(response.message)
+      })
+      .then(folders => {
+        this.setState({
+          folders
+        })
+      });
+      
+      fetch('http://localhost:9090/notes')
+      .then(response => {
+        if(response.ok) {
+          return response.json()
+        }
+        throw new Error(response.message)
+      })
+      .then(notes => {
+        this.setState({
+          notes
+        })
+      });
+
   }
 
   render() { 
     const contextValue = {
-      store: this.state.store
+      folders: this.state.folders,
+      notes: this.state.notes
     }
     return (
       <NotesContext.Provider

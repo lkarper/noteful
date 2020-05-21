@@ -6,11 +6,11 @@ const NotesSidebar = (props) => {
     return (
         <NotesContext.Consumer>
             {value => {
-                const folderIdToMatch = value.store.notes
+                const folderIdToMatch = value.notes
                     .find(note => note.id === props.match.params.noteId)
                     .folderId;
 
-                const folder = value.store.folders.find(f => f.id === folderIdToMatch);
+                const folder = value.folders.find(f => f.id === folderIdToMatch);
 
                 return (
                     <nav className="sidebar">

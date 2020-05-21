@@ -6,7 +6,7 @@ const Folder = (props) => {
     return (
         <NotesContext.Consumer>
             {value => {
-                const notes = value.store.notes
+                const notes = value.notes
                     .filter(note => note.folderId === props.match.params.folderId)
                     .map(note =>
                         <ShortNote key={note.id} note={note} />

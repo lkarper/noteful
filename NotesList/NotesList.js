@@ -6,7 +6,7 @@ const NotesList = () => {
     return (
         <NotesContext.Consumer>
             {value => {
-                const notes = value.store.notes.map((note) => 
+                const notes = value.notes.map((note) => 
                     <ShortNote key={note.id} note={note} />
                 );
                 return (
