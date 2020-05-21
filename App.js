@@ -14,6 +14,13 @@ class App extends React.Component {
     notes: []
   }
 
+  deleteNote = (noteId) => {
+    const newNotes = this.state.notes.filter(n => n.id !== noteId);
+    this.setState({
+      notes: newNotes
+    });
+  }
+
   componentDidMount() {
     fetch('http://localhost:9090/folders')
       .then(response => {
@@ -28,12 +35,12 @@ class App extends React.Component {
         })
       });
       
-      fetch('http://localhost:9090/notes')
+    fetch('http://localhost:9090/notes')
       .then(response => {
         if(response.ok) {
           return response.json()
         }
-        throw new Error(response.message)
+        throw new Error(response.statusText)
       })
       .then(notes => {
         this.setState({
@@ -46,7 +53,8 @@ class App extends React.Component {
   render() { 
     const contextValue = {
       folders: this.state.folders,
-      notes: this.state.notes
+      notes: this.state.notes,
+      deleteNote: this.deleteNote,
     }
     return (
       <NotesContext.Provider
