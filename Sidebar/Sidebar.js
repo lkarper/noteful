@@ -4,17 +4,19 @@ import SidebarLinks from '../SidebarLinks/SidebarLinks';
 import NotesSidebar from '../NotesSidebar/NotesSidebar';
 import './Sidebar.css';
 
-const Sidebar = (props) => {
-    const { store } = props;
+const Sidebar = () => {
+    
     return (
         <>
             <Route 
                 exact path={["/", "/folder/:folderId"]}
-                render={(routeProps) => <SidebarLinks store={store} {...routeProps} />}
+                component={SidebarLinks}
+                // render={(routeProps) => <SidebarLinks store={store} {...routeProps} />}
             />
             <Route 
                 path="/note/:noteId"
-                render={(routeProps) => <NotesSidebar store={store} {...routeProps} />} 
+                component={NotesSidebar}
+                // render={(routeProps) => <NotesSidebar store={store} {...routeProps} />} 
             />    
         </>
     );

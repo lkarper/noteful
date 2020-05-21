@@ -10,15 +10,18 @@ const Main = (props) => {
         <main>
             <Route 
                 exact path="/"
-                render={() => <NotesList store={props.store} />}
+                component={NotesList}
+                // render={() => <NotesList store={props.store} />}
             />
             <Route 
                 path="/note/:noteId"
-                render={routeProps => <Note notes={props.store.notes} {...routeProps} />}
+                component={Note}
+                // render={routeProps => <Note notes={props.store.notes} {...routeProps} />}
             />
             <Route
                 path="/folder/:folderId"
-                render={routeProps => <Folder store={props.store} {...routeProps} />}
+                component={Folder}
+                // render={routeProps => <Folder store={props.store} {...routeProps} />}
             />
         </main>
     );

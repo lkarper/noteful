@@ -14,14 +14,21 @@ class App extends React.Component {
   }
 
   render() { 
+    const contextValue = {
+      store: this.state.store
+    }
     return (
-      <div className="App">
-        <Header />
-        <div className="content">
-          <Sidebar store={this.state.store} />
-          <Main store={this.state.store} />
+      <NotesContext.Provider
+        value={contextValue}
+      >
+        <div className="App">
+          <Header />
+          <div className="content">
+            <Sidebar />
+            <Main />
+          </div>
         </div>
-      </div>
+      </NotesContext.Provider>
     );
   }
 }
