@@ -24,7 +24,7 @@ class App extends React.Component {
   addFolder = (folder) => {
     this.setState({
       folders: [...this.state.folders, folder]
-    })
+    });
   }
 
   addNote = (note) => {
@@ -70,7 +70,7 @@ class App extends React.Component {
       addFolder: this.addFolder,
       addNote: this.addNote
     }
-    
+
     return (
       <NotesContext.Provider
         value={contextValue}

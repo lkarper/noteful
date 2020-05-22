@@ -23,7 +23,7 @@ const NotesSidebar = (props) => {
                         </NavLink>
                         <button 
                             type="buton"
-                            onClick={() => props.history.goBack()}
+                            onClick={() => props.history.push(`/folder/${folder.id}`)}
                         >
                             Go back
                         </button>

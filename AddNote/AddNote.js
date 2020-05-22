@@ -55,6 +55,7 @@ class AddNote extends Component {
             })
             .then(data => {
                 cb(data);
+                this.props.history.push(`/note/${data.id}`);
             });
     }
 

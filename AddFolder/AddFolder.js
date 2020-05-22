@@ -35,6 +35,7 @@ class AddFolder extends Component {
             })
             .then(data => {
                 cb(data);
+                this.props.history.push(`/folder/${data.id}`);
             });
     }
 
