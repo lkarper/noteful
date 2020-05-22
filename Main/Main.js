@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import NotesList from '../NotesList/NotesList';
 import Folder from '../Folder/Folder';
 import Note from '../Note/Note';
+import AddFolder from '../AddFolder/AddFolder';
 import './Main.css';
 
 const Main = () => {
@@ -19,6 +20,10 @@ const Main = () => {
             <Route
                 path="/folder/:folderId"
                 component={Folder}
+            />
+            <Route
+                path="/add-folder"
+                component={AddFolder}
             />
         </main>
     );

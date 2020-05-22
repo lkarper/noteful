@@ -21,6 +21,12 @@ class App extends React.Component {
     });
   }
 
+  addFolder = (folder) => {
+    this.setState({
+      folders: [...this.state.folders, folder]
+    })
+  }
+
   componentDidMount() {
     fetch('http://localhost:9090/folders')
       .then(response => {
@@ -55,6 +61,7 @@ class App extends React.Component {
       folders: this.state.folders,
       notes: this.state.notes,
       deleteNote: this.deleteNote,
+      addFolder: this.addFolder,
     }
     return (
       <NotesContext.Provider

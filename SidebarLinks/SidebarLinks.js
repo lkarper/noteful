@@ -20,7 +20,13 @@ const SidebarLinks = () => {
                 return (
                     <nav className="sidebar">
                         {links}
-                        <button type="button">Add folder</button>
+                        <NavLink
+                            className='folder-link'
+                            activeClassName='highlighted'
+                            to={'/add-folder'}
+                        >
+                            Add folder
+                        </NavLink>
                     </nav>
                 )
             }}
