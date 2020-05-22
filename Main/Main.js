@@ -4,6 +4,7 @@ import NotesList from '../NotesList/NotesList';
 import Folder from '../Folder/Folder';
 import Note from '../Note/Note';
 import AddFolder from '../AddFolder/AddFolder';
+import AddNote from '../AddNote/AddNote';
 import './Main.css';
 
 const Main = () => {
@@ -24,6 +25,10 @@ const Main = () => {
             <Route
                 path="/add-folder"
                 component={AddFolder}
+            />
+            <Route
+                path="/add-note"
+                component={AddNote}
             />
         </main>
     );

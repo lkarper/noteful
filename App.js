@@ -27,6 +27,12 @@ class App extends React.Component {
     })
   }
 
+  addNote = (note) => {
+    this.setState({
+      notes: [...this.state.notes, note]
+    })
+  }
+
   componentDidMount() {
     fetch('http://localhost:9090/folders')
       .then(response => {
@@ -62,7 +68,9 @@ class App extends React.Component {
       notes: this.state.notes,
       deleteNote: this.deleteNote,
       addFolder: this.addFolder,
+      addNote: this.addNote
     }
+    
     return (
       <NotesContext.Provider
         value={contextValue}

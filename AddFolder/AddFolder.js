@@ -28,13 +28,12 @@ class AddFolder extends Component {
             }
         })
             .then(response => {
-                if(response.ok) {
-                return response.json()
+                if (response.ok) {
+                    return response.json();
                 }
-                throw new Error(response.message)
+                throw new Error(response.message);
             })
             .then(data => {
-                console.log(data);
                 cb(data);
             });
     }

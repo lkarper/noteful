@@ -9,7 +9,7 @@ const Sidebar = () => {
     return (
         <>
             <Route 
-                exact path={["/", "/folder/:folderId", "/add-folder"]}
+                exact path={["/", "/folder/:folderId", "/add-folder", "/add-note"]}
                 component={SidebarLinks}
             />
             <Route 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ShortNote from '../ShortNote/ShortNote';
 import NotesContext from '../NotesContext';
 
@@ -17,7 +18,16 @@ const Folder = (props) => {
                         <ul>
                             {notes}
                         </ul>
-                        <button type="button">Add note</button>
+                        <Link 
+                            to={{
+                                pathname: "/add-note",
+                                state: {
+                                    folderId: props.match.params.folderId
+                                }
+                            }}
+                        >
+                            Add note
+                        </Link>
                     </section>
                 )
             }}
