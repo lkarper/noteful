@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import NotesContext from '../NotesContext';
 
-const Note = (props) => {
+class Note extends Component {
 
-    const deleteNoteRequest = (noteId, cb) => {
+    state = {
+        error: null,
+    }
+
+    static contextType = NotesContext;
+
+    deleteNoteRequest = (noteId, cb) => {
         fetch(`http://localhost:9090/notes/${noteId}`, {
             method: 'DELETE',
             headers: {
@@ -11,38 +17,45 @@ const Note = (props) => {
             },
         })
         .then(response => {
-            if(response.ok) {
+            if (response.ok) {
                 return response.json();
             }
-            throw new Error (response.statusText)
+            throw new Error(response.message);
         })
         .then(data => {
-            props.history.push('/');
+            this.props.history.push('/');
             cb(noteId);
+        })
+        .catch(error => {
+            console.log(error);
+            this.setState({ error: error.message });
         });
     }
 
-    return (
-        <NotesContext.Consumer>
-            {value => {
-                const note = value.notes.find(n => 
-                    n.id === props.match.params.noteId
-                );
+    render() {
+        const error = this.state.error;
+        const errorHTML = (
+            <div>
+                <h2>Could not delete note: {error}.</h2>
+                <p>Check your connection and try again.</p>
+            </div>
+        );
 
-                return (
-                    <section className="notes">
-                        <h2>{note.name}</h2>
-                        <p>{`Last modified on: ${(new Date(note.modified)).toString()}`}</p>
-                        <button 
-                            type="button"
-                            onClick={() => deleteNoteRequest(note.id, value.deleteNote)}    
-                        >Delete Note</button>
-                        <p>{note.content}</p>
-                    </section>
-                );
-            }}
-        </NotesContext.Consumer>
-    );
+        const note = this.context.notes.find(n => n.id === this.props.match.params.noteId);
+
+        return (
+            <section className="notes">
+                <h2>{note.name}</h2>
+                <p>{`Last modified on: ${(new Date(note.modified)).toString()}`}</p>
+                <button 
+                    type="button"
+                    onClick={() => this.deleteNoteRequest(note.id, this.context.deleteNote)}    
+                >Delete Note</button>
+                {error ? errorHTML : ''}
+                <p>{note.content}</p>
+            </section>
+        );
+    }
 }
 
 export default Note;

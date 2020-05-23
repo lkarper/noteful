@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cuid from 'cuid';
 import NotesContext from '../NotesContext';
+import ValidationError from '../ValidationError';
 
 class AddFolder extends Component {
 
@@ -9,8 +10,9 @@ class AddFolder extends Component {
     state = {
         folder: {
             name: '',
-            touched: false
-        }
+            touched: false,
+        },
+        error: null,
     }
 
     handleNewFolder = (event, cb) => {
@@ -36,6 +38,10 @@ class AddFolder extends Component {
             .then(data => {
                 cb(data);
                 this.props.history.push(`/folder/${data.id}`);
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({ error: error.message });
             });
     }
 
@@ -43,19 +49,39 @@ class AddFolder extends Component {
         this.setState({
             folder: {
                 name,
-                touched: true
-            }
+                touched: true,
+            },
         });
     }
 
+    validateFolderName = () => {
+        const name = this.state.folder.name.trim();
+        if (name.length === 0) {
+            return 'Name is required and must contain at least one character.';
+        }
+    }
+
     render() {
+        const { error } = this.state;
+        const errorHTML = (
+            <div className="folder-error">
+                <h2>Looks like something went wrong: {error}.</h2>
+                <p>Please try again later.</p>
+            </div>
+        );
+        const nameError = this.validateFolderName();
+
         return(
-            <form onSubmit={event => this.handleNewFolder(event, this.context.addFolder)}>
-                <label htmlFor="folder-name">Enter a name for a new folder:</label>
-                <input type="text" id="folder-name" name="folder-name" onChange={e => this.updateFolderName(e.currentTarget.value)} required />
-                <button type="submit">Create Folder</button>
-            </form>
-        )
+            <>
+                <form onSubmit={e => this.handleNewFolder(e, this.context.addFolder)}>
+                    <label htmlFor="folder-name">Enter a name for a new folder:</label>
+                    <input type="text" id="folder-name" name="folder-name" onChange={e => this.updateFolderName(e.currentTarget.value)} required />
+                    {this.state.folder.touched && <ValidationError message={nameError} />}
+                    <button type="submit">Create Folder</button>
+                </form>
+                {error ?  errorHTML : ''}
+            </>
+        );
     }
 }
 

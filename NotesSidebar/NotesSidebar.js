@@ -6,6 +6,13 @@ const NotesSidebar = (props) => {
     return (
         <NotesContext.Consumer>
             {value => {
+                const error = value.folderError;
+                const errorHTML = (
+                    <div className="folder-load-error">
+                        <h2>Sorry, could not load folders from the server: {error}.</h2>
+                        <p>Check your network connection and reload the page.</p>
+                    </div>
+                );
                 const folderIdToMatch = value.notes
                     .find(note => note.id === props.match.params.noteId)
                     .folderId;
@@ -14,6 +21,7 @@ const NotesSidebar = (props) => {
 
                 return (
                     <nav className="sidebar">
+                        {error ? errorHTML : ''}
                         <NavLink
                             className="folder-link"
                             activeClassName="highlighted"

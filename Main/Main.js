@@ -5,31 +5,40 @@ import Folder from '../Folder/Folder';
 import Note from '../Note/Note';
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
+import NotesError from '../NotesError';
+import AddFolderError from '../AddFolderError';
+import AddNoteError from '../AddNoteError';
 import './Main.css';
 
 const Main = () => {
     return (
         <main>
-            <Route 
-                exact path="/"
-                component={NotesList}
-            />
-            <Route 
-                path="/note/:noteId"
-                component={Note}
-            />
-            <Route
-                path="/folder/:folderId"
-                component={Folder}
-            />
-            <Route
-                path="/add-folder"
-                component={AddFolder}
-            />
-            <Route
-                path="/add-note"
-                component={AddNote}
-            />
+            <NotesError>
+                <Route 
+                    exact path="/"
+                    component={NotesList}
+                />
+                <Route 
+                    path="/note/:noteId"
+                    component={Note}
+                />
+                <Route
+                    path="/folder/:folderId"
+                    component={Folder}
+                />
+            </NotesError>
+            <AddFolderError>
+                <Route
+                    path="/add-folder"
+                    component={AddFolder}
+                />
+            </AddFolderError>
+            <AddNoteError>
+                <Route
+                    path="/add-note"
+                    component={AddNote}
+                />
+            </AddNoteError>
         </main>
     );
 }

@@ -11,7 +11,9 @@ class App extends React.Component {
 
   state = {
     folders: [],
-    notes: []
+    notes: [],
+    folderError: null,
+    noteError: null,
   }
 
   deleteNote = (noteId) => {
@@ -45,6 +47,10 @@ class App extends React.Component {
         this.setState({
           folders
         })
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({ folderError: error.message });
       });
       
     fetch('http://localhost:9090/notes')
@@ -52,12 +58,16 @@ class App extends React.Component {
         if(response.ok) {
           return response.json()
         }
-        throw new Error(response.statusText)
+        throw new Error(response.message)
       })
       .then(notes => {
         this.setState({
           notes
         })
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({ noteError: error.message });
       });
 
   }
@@ -66,9 +76,11 @@ class App extends React.Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
+      folderError: this.state.folderError,
+      noteError: this.state.noteError,
       deleteNote: this.deleteNote,
       addFolder: this.addFolder,
-      addNote: this.addNote
+      addNote: this.addNote,
     }
 
     return (
