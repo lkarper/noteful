@@ -81,7 +81,7 @@ class App extends React.Component {
       deleteNote: this.deleteNote,
       addFolder: this.addFolder,
       addNote: this.addNote,
-    }
+    };
 
     return (
       <NotesContext.Provider

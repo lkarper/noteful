@@ -7,6 +7,14 @@ class AddNote extends Component {
 
     static contextType = NotesContext;
 
+    static defaultProps = {
+        location: {
+            state: {
+                folderId: null,
+            },
+        },
+    };
+
     state = {
         name: {
             value: '',
@@ -91,7 +99,7 @@ class AddNote extends Component {
     }
 
     validateFolderChoice = () => {
-        if (!this.state.folderId) {
+        if (!this.state.folderId.value) {
             return 'You must select a folder in which to place your note.';
         }
     }
@@ -135,17 +143,31 @@ class AddNote extends Component {
             <>
                 <form onSubmit={e => this.handleAddNote(e, this.context.addNote)}>
                     <label htmlFor="add-note">Enter name for a new note: </label>
-                    <input type="text" id="add-note" name="add-note" onChange={e => this.updateName(e.currentTarget.value)} required />
+                    <input type="text" id="add-note" name="add-note" className="note-name" onChange={e => this.updateName(e.currentTarget.value)} required />
                     {this.state.name.touched && <ValidationError message={nameError} />}
                     <fieldset>
                         <legend>Select a folder to put the new note in: </legend>
                         {folderRadios}
                     </fieldset>
-                    {this.state.folderId.touched && <ValidationError message={folderError} />}
+                    {<ValidationError message={folderError} />}
                     <label htmlFor="content">Enter note content here:</label>
-                    <textarea id="content" name="content" rows="5" cols="50" onChange={e => this.updateContent(e.currentTarget.value)} required>(Type your note here...)</textarea>
+                    <textarea 
+                        id="content" 
+                        name="content" 
+                        rows="5" 
+                        cols="50" 
+                        className="note-content"
+                        onChange={e => this.updateContent(e.currentTarget.value)} 
+                        placeholder="Type your note here..." 
+                        required>
+                    </textarea>
                     {this.state.content.touched && <ValidationError message={contentError} />}
-                    <button type="submit">Add Note</button> 
+                    <button 
+                        type="submit"
+                        disabled={nameError || folderError || contentError ? true : false}
+                        >
+                            Add Note
+                    </button> 
                 </form>
                 {error ?  errorHTML : ''}
             </>
