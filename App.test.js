@@ -25,6 +25,7 @@ describe('App component', () =>{
       </BrowserRouter>
     );
     expect(toJSON(wrapper)).toMatchSnapshot();
+    wrapper.unmount();
   });
 
 });
