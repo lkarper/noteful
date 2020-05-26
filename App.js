@@ -39,9 +39,9 @@ class App extends React.Component {
     fetch('http://localhost:9090/folders')
       .then(response => {
         if(response.ok) {
-          return response.json()
+          return response.json();
         }
-        throw new Error(response.message)
+        throw new Error(response.message);
       })
       .then(folders => {
         this.setState({
@@ -56,9 +56,9 @@ class App extends React.Component {
     fetch('http://localhost:9090/notes')
       .then(response => {
         if(response.ok) {
-          return response.json()
+          return response.json();
         }
-        throw new Error(response.message)
+        throw new Error(response.message);
       })
       .then(notes => {
         this.setState({
