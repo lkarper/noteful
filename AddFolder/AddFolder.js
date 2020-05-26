@@ -67,13 +67,13 @@ class AddFolder extends Component {
         const errorHTML = (
             <div className="folder-error">
                 <h2>Looks like something went wrong: {error}.</h2>
-                <p>Please try again later.</p>
+                <p>A new folder could not be created at this time.  Please try again later.</p>
             </div>
         );
         const nameError = this.validateFolderName();
 
         return (
-            <>
+            <div>
                 <form onSubmit={e => this.handleNewFolder(e, this.context.addFolder)}>
                     <label htmlFor="folder-name">Enter a name for a new folder:</label>
                     <input 
@@ -92,7 +92,7 @@ class AddFolder extends Component {
                     </button>
                 </form>
                 {error ?  errorHTML : ''}
-            </>
+            </div>
         );
     }
 }

@@ -137,7 +137,7 @@ class AddNote extends Component {
         const errorHTML = (
             <div className="folder-error">
                 <h2>Looks like something went wrong: {error}.</h2>
-                <p> Please try again later.</p>
+                <p>A new note could not be created.  Please try again later.</p>
             </div>
         );
 
