@@ -76,12 +76,20 @@ class AddFolder extends Component {
             <>
                 <form onSubmit={e => this.handleNewFolder(e, this.context.addFolder)}>
                     <label htmlFor="folder-name">Enter a name for a new folder:</label>
-                    <input type="text" id="folder-name" name="folder-name" onChange={e => this.updateFolderName(e.currentTarget.value)} required />
+                    <input 
+                        type="text" 
+                        id="folder-name" 
+                        name="folder-name" 
+                        onChange={e => this.updateFolderName(e.currentTarget.value)} 
+                        required 
+                    />
                     {this.state.folder.touched && <ValidationError message={nameError} />}
                     <button 
                         type="submit"
-                        disabled={nameError ? true : false}>
-                            Create Folder</button>
+                        disabled={nameError ? true : false}
+                    >
+                        Create Folder
+                    </button>
                 </form>
                 {error ?  errorHTML : ''}
             </>
