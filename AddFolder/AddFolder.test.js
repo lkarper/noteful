@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import AddFolder from './AddFolder';
 
-describe('AddFolder component', () => {
+describe.skip('AddFolder component', () => {
 
     it('renders the UI without crashing', () => {
         const div = document.createElement('div');

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import NotesContext from '../NotesContext';
 
 const NotesSidebar = (props) => {
@@ -17,29 +18,50 @@ const NotesSidebar = (props) => {
                     .find(note => note.id === props.match.params.noteId)
                     .folderId;
 
-                const folder = value.folders.find(f => f.id === folderIdToMatch);
+                const folder = folderIdToMatch ? value.folders.find(f => f.id === folderIdToMatch) : null;
 
+                if (folder) {
+                    return (
+                        <nav className="sidebar">
+                            {error ? errorHTML : ''}
+                            <NavLink
+                                className="folder-link"
+                                activeClassName="highlighted"
+                                to={`/folder/${folder.id}`}
+                            >
+                                {folder.name}
+                            </NavLink>
+                            <button 
+                                type="buton"
+                                onClick={() => props.history.push(`/folder/${folder.id}`)}
+                            >
+                                Back to folder
+                            </button>
+                        </nav>
+                    );
+                }
                 return (
                     <nav className="sidebar">
-                        {error ? errorHTML : ''}
-                        <NavLink
-                            className="folder-link"
-                            activeClassName="highlighted"
-                            to={`/folder/${folder.id}`}
-                        >
-                            {folder.name}
-                        </NavLink>
-                        <button 
-                            type="buton"
-                            onClick={() => props.history.push(`/folder/${folder.id}`)}
-                        >
-                            Back to folder
-                        </button>
+                        <h2>Sorry, could not load folders.</h2>
+                        <p>Check your network connection and reload the page.</p>
                     </nav>
                 );
             }}
         </NotesContext.Consumer>
     );
+}
+
+NotesSidebar.defaultProps = {
+    match: {
+        params: {
+            noteId: '',
+        },
+    },
+}
+
+NotesSidebar.propTypes = {
+    match: PropTypes.object,
+    history: PropTypes.object,
 }
 
 export default NotesSidebar;

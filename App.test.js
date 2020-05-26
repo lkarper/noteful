@@ -5,7 +5,7 @@ import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import App from './App';
 
-describe('App component', () =>{
+describe.skip('App component', () =>{
 
   it('renders the UI without crashing', () => {
     const div = document.createElement('div');

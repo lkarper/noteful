@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cuid from 'cuid';
 import NotesContext from '../NotesContext';
 import ValidationError from '../ValidationError';
@@ -10,7 +11,7 @@ class AddNote extends Component {
     static defaultProps = {
         location: {
             state: {
-                folderId: null,
+                folderId: '',
             },
         },
     };
@@ -173,6 +174,11 @@ class AddNote extends Component {
             </>
         );
     }
+}
+
+AddNote.propTypes = {
+    location: PropTypes.object,
+    history: PropTypes.object,
 }
 
 export default AddNote;

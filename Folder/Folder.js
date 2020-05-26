@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ShortNote from '../ShortNote/ShortNote';
 import NotesContext from '../NotesContext';
 
@@ -33,6 +34,18 @@ const Folder = (props) => {
             }}
         </NotesContext.Consumer>
     );
+}
+
+Folder.defaultProps = {
+    match: {
+        params: {
+            folderId: '',
+        },
+    },
+};
+
+Folder.propTypes = {
+    match: PropTypes.object,
 }
 
 export default Folder;

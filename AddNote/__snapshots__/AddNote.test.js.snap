@@ -5,7 +5,7 @@ exports[`AddNote component disables submit button when input is blank 1`] = `
   location={
     Object {
       "state": Object {
-        "folderId": null,
+        "folderId": "",
       },
     }
   }
@@ -70,7 +70,7 @@ exports[`AddNote component does not display an error message when folder is clic
   location={
     Object {
       "state": Object {
-        "folderId": null,
+        "folderId": "",
       },
     }
   }
@@ -127,7 +127,7 @@ exports[`AddNote component enables submit button when valid note name, folder, a
   location={
     Object {
       "state": Object {
-        "folderId": null,
+        "folderId": "",
       },
     }
   }
@@ -186,7 +186,7 @@ exports[`AddNote component renders an error message when no content is added to 
   location={
     Object {
       "state": Object {
-        "folderId": null,
+        "folderId": "",
       },
     }
   }
@@ -260,7 +260,7 @@ exports[`AddNote component renders an error message when no folder is clicked 1`
   location={
     Object {
       "state": Object {
-        "folderId": null,
+        "folderId": "",
       },
     }
   }
@@ -343,7 +343,7 @@ exports[`AddNote component renders an error message when the note name input con
   location={
     Object {
       "state": Object {
-        "folderId": null,
+        "folderId": "",
       },
     }
   }
@@ -417,7 +417,7 @@ exports[`AddNote component renders the UI as expected 1`] = `
   location={
     Object {
       "state": Object {
-        "folderId": null,
+        "folderId": "",
       },
     }
   }

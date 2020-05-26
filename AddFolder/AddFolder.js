@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cuid from 'cuid';
 import NotesContext from '../NotesContext';
 import ValidationError from '../ValidationError';
@@ -86,6 +87,10 @@ class AddFolder extends Component {
             </>
         );
     }
+}
+
+AddFolder.propTypes = {
+    history: PropTypes.object,
 }
 
 export default AddFolder;
