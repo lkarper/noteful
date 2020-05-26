@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cuid from 'cuid';
 import NotesContext from '../NotesContext';
 import ValidationError from '../ValidationError';
+import './AddNote.css';
 
 class AddNote extends Component {
 
@@ -23,7 +24,7 @@ class AddNote extends Component {
         },
         folderId: {
             value: this.props.location.state.folderId,
-            touched: this.props.location.state.folderId || false
+            touched: this.props.location.state.folderId,
         },
         content: {
             value: '',
@@ -141,10 +142,20 @@ class AddNote extends Component {
         );
 
         return (
-            <>
-                <form onSubmit={e => this.handleAddNote(e, this.context.addNote)}>
+            <div className="add-note-container">
+                <form 
+                    className="add-note-form"
+                    onSubmit={e => this.handleAddNote(e, this.context.addNote)}
+                    >
                     <label htmlFor="add-note">Enter name for a new note: </label>
-                    <input type="text" id="add-note" name="add-note" className="note-name" onChange={e => this.updateName(e.currentTarget.value)} required />
+                    <input 
+                        type="text" 
+                        id="add-note" 
+                        name="add-note" 
+                        className="note-name" 
+                        onChange={e => this.updateName(e.currentTarget.value)} 
+                        required 
+                    />
                     {this.state.name.touched && <ValidationError message={nameError} />}
                     <fieldset>
                         <legend>Select a folder to put the new note in: </legend>
@@ -156,7 +167,7 @@ class AddNote extends Component {
                         id="content" 
                         name="content" 
                         rows="5" 
-                        cols="50" 
+                        cols="75" 
                         className="note-content"
                         onChange={e => this.updateContent(e.currentTarget.value)} 
                         placeholder="Type your note here..." 
@@ -171,14 +182,14 @@ class AddNote extends Component {
                     </button> 
                 </form>
                 {error ?  errorHTML : ''}
-            </>
+            </div>
         );
     }
 }
 
 AddNote.propTypes = {
-    location: PropTypes.object,
-    history: PropTypes.object,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
 }
 
 export default AddNote;
