@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ShortNote from '../ShortNote/ShortNote';
 import NotesContext from '../NotesContext';
+import './Folder.css';
 
 const Folder = (props) => {
     return (
@@ -20,6 +21,7 @@ const Folder = (props) => {
                             {notes}
                         </ul>
                         <Link 
+                            className="add-note-button"
                             to={{
                                 pathname: "/add-note",
                                 state: {
@@ -45,7 +47,7 @@ Folder.defaultProps = {
 };
 
 Folder.propTypes = {
-    match: PropTypes.object,
+    match: PropTypes.object.isRequired,
 }
 
 export default Folder;

@@ -26,6 +26,7 @@ const NotesList = () => {
                             {error ? errorHTML : ''}
                         </ul>
                         <Link 
+                            className="add-note-button"
                             to={{
                                 pathname: "/add-note",
                                 state: {
