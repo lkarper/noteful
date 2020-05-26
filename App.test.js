@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import App from './App';
 
@@ -19,7 +19,7 @@ describe('App component', () =>{
   });
 
   it('renders the UI as expected', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <BrowserRouter>
         <App />
       </BrowserRouter>
