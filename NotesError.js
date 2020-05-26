@@ -6,7 +6,7 @@ class NotesError extends Component {
     };
 
     static getDerivedStateFromError(error) {
-        return { haserror: true };
+        return { hasError: true };
     }
 
     render() {

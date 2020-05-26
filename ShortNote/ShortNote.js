@@ -19,7 +19,7 @@ class ShortNote extends Component {
             modified: (new Date()).toJSON(), 
             folderId: "PlaceholderFolderId", 
             content: "Lorem ipsum...",
-        }
+        },
     }
 
     deleteNoteRequest = (noteId, cb) => {
@@ -30,7 +30,7 @@ class ShortNote extends Component {
             },
         })
         .then(response => {
-            if(response.ok) {
+            if (response.ok) {
                 return response.json();
             }
             throw new Error(response.message);

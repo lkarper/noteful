@@ -15,7 +15,7 @@ const NotesList = () => {
                     </li>
                 );
 
-                const notes = value.notes.map((note) => 
+                const notes = value.notes.map(note => 
                     <ShortNote key={note.id} note={note} />
                 );
 

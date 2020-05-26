@@ -19,33 +19,33 @@ class App extends React.Component {
   deleteNote = (noteId) => {
     const newNotes = this.state.notes.filter(n => n.id !== noteId);
     this.setState({
-      notes: newNotes
+      notes: newNotes,
     });
   }
 
   addFolder = (folder) => {
     this.setState({
-      folders: [...this.state.folders, folder]
+      folders: [...this.state.folders, folder],
     });
   }
 
   addNote = (note) => {
     this.setState({
-      notes: [...this.state.notes, note]
-    })
+      notes: [...this.state.notes, note],
+    });
   }
 
   componentDidMount() {
     fetch('http://localhost:9090/folders')
       .then(response => {
-        if(response.ok) {
+        if (response.ok) {
           return response.json();
         }
         throw new Error(response.message);
       })
       .then(folders => {
         this.setState({
-          folders
+          folders,
         });
       })
       .catch(error => {
@@ -55,14 +55,14 @@ class App extends React.Component {
       
     fetch('http://localhost:9090/notes')
       .then(response => {
-        if(response.ok) {
+        if (response.ok) {
           return response.json();
         }
         throw new Error(response.message);
       })
       .then(notes => {
         this.setState({
-          notes
+          notes,
         });
       })
       .catch(error => {

@@ -60,8 +60,8 @@ NotesSidebar.defaultProps = {
 }
 
 NotesSidebar.propTypes = {
-    match: PropTypes.object,
-    history: PropTypes.object,
+    match: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
 }
 
 export default NotesSidebar;

@@ -29,7 +29,7 @@ const SidebarLinks = () => {
                 return (
                     <nav className="sidebar">
                         {links}
-                        {error ? errorHTML : '' }
+                        {error ? errorHTML : ''}
                         <NavLink
                             className='folder-link'
                             activeClassName='highlighted'

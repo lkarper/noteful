@@ -14,6 +14,7 @@ class AddFolderError extends Component {
         if (this.state.hasError) {
             return <h2>Could not add folder.  Check your connection and try again.</h2>;
         }
+        
         return this.props.children;
     }
 }

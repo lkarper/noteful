@@ -77,8 +77,8 @@ class Note extends Component {
 }
 
 Note.propTypes = {
-    history: PropTypes.object,
-    match: PropTypes.object,
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
 }
 
 export default Note;

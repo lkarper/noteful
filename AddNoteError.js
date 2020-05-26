@@ -14,6 +14,7 @@ class AddNoteError extends Component {
         if (this.state.hasError) {
             return <h2>Could not add note.  Check your connection and try again.</h2>
         }
+        
         return this.props.children;
     }
 }
