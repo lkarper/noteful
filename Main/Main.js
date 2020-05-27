@@ -5,9 +5,9 @@ import Folder from '../Folder/Folder';
 import Note from '../Note/Note';
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
-import NotesError from '../NotesError';
-import AddFolderError from '../AddFolderError';
-import AddNoteError from '../AddNoteError';
+import NotesError from '../NotesError/NotesError';
+import AddFolderError from '../AddFolderError/AddFolderError';
+import AddNoteError from '../AddNoteError/AddNoteError';
 import './Main.css';
 
 const Main = () => {

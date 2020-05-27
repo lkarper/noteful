@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import SidebarLinks from '../SidebarLinks/SidebarLinks';
 import NotesSidebar from '../NotesSidebar/NotesSidebar';
-import SidebarError from '../SidebarError';
+import SidebarError from '../SidebarError/SidebarError';
 import './Sidebar.css';
 
 const Sidebar = () => {

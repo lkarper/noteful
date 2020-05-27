@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import NotesContext from '../NotesContext';
+import NotesContext from '../NotesContext/NotesContext';
 
 const SidebarLinks = () => {
 

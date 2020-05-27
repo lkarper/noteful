@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import AddNoteError from './AddNoteError';
-import AddNote from './AddNote/AddNote';
+import AddNote from '../AddNote/AddNote';
 
 describe.skip('AddNoteError component', () => {
 

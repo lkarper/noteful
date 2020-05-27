@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ShortNote from '../ShortNote/ShortNote';
-import NotesContext from '../NotesContext';
+import NotesContext from '../NotesContext/NotesContext';
 import './Folder.css';
 
 const Folder = (props) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ShortNote from '../ShortNote/ShortNote';
-import NotesContext from '../NotesContext';
+import NotesContext from '../NotesContext/NotesContext';
 
 const NotesList = () => {
     return (

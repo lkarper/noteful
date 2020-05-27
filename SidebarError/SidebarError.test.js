@@ -3,8 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import SidebarError from './SidebarError';
-import SidebarLinks from './SidebarLinks/SidebarLinks';
-import NotesSidebar from './NotesSidebar/NotesSidebar';
+import SidebarLinks from '../SidebarLinks/SidebarLinks';
+import NotesSidebar from '../NotesSidebar/NotesSidebar';
 
 
 describe('SidebarError component', () => {

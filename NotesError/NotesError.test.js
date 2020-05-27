@@ -2,30 +2,30 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import AddFolderError from './AddFolderError';
-import SidebarLinks from './SidebarLinks/SidebarLinks';
-import NotesSidebar from './NotesSidebar/NotesSidebar';
+import NotesError from './NotesError';
+import NotesList from '../NotesList/NotesList';
+import Note from '../Note/Note';
 
-describe.skip('AddFolderError component', () => {
+describe.skip('NotesError component', () => {
 
     it('renders the UI without crashing', () => {
         const wrapper = mount(
-            <AddFolderError>
+            <NotesError>
                 <BrowserRouter>
-                    <SidebarLinks />
+                    <NotesList />
                 </BrowserRouter>
-            </AddFolderError>
+            </NotesError>
         );
         wrapper.unmount();
     });
 
     it('renders the UI as expected', () => {
         const wrapper = mount(
-            <AddFolderError>
+            <NotesError>
                 <BrowserRouter>
-                    <SidebarLinks />
+                    <NotesList />
                 </BrowserRouter>
-            </AddFolderError>
+            </NotesError>
         );
         expect(toJSON(wrapper)).toMatchSnapshot();
         wrapper.unmount();
@@ -33,11 +33,11 @@ describe.skip('AddFolderError component', () => {
 
     it('renders an error message when an error occurs in the DOM tree beneath it', () => {
         const wrapper = mount(
-            <AddFolderError>
+            <NotesError>
                 <BrowserRouter>
-                    <NotesSidebar />
+                    <Note location={""} />
                 </BrowserRouter>
-            </AddFolderError>
+            </NotesError>
         );
         expect(toJSON(wrapper)).toMatchSnapshot();
         wrapper.unmount();

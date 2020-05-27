@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cuid from 'cuid';
-import NotesContext from '../NotesContext';
-import ValidationError from '../ValidationError';
+import NotesContext from '../NotesContext/NotesContext';
+import ValidationError from '../ValidationError/ValidationError';
 
 class AddFolder extends Component {
 

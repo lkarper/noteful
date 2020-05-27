@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
 import Main from './Main/Main';
-import NotesContext from './NotesContext';
+import NotesContext from './NotesContext/NotesContext';
 import './App.css';
 
 class App extends React.Component {
